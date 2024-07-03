@@ -1,0 +1,14 @@
+version: '3'
+services:
+  keyimages-back:
+    #image: user_preferences:v1 
+    image: imexhs/ris-viewer:key-images-back-v1
+    build: 
+      context: ../
+      dockerfile: ./docs/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    env_file:
+      - vars.env

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  keyimages:
+    image: imexhs/ris-viewer:keyimages-tenant-test
+    build: 
+      context: ../..
+      dockerfile: ./key_images_back/docker_dev/Dockerfile
+    env_file:
+      - back.env
+    ports:
+      - "9020:8000"
+
+  test_db:
+    image: postgres
+    restart: always
+    ports:
+      - "9544:5432"
+    env_file:
+      - test.env

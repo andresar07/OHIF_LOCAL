@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js'
+
+            // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+            import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js'
+
+            // Add Firebase products that you want to use
+            import { 
+                getAuth,
+                onAuthStateChanged,
+                signInWithEmailAndPassword
+            } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
+            import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js'
+
+
+            var config = {
+                apiKey: "AIzaSyCkaA4ZLyetiDQ2TkUIU4TeNESe3DlF5QQ",
+                authDomain: "deep-district-406416.firebaseapp.com",
+            };
+            const app = initializeApp(config);
+            const auth = getAuth(app, {/* extra options */ });
+
+            const tenantId = "acme-alex-1uoq4";
+            auth.tenantId = tenantId;
+
+            document.addEventListener("DOMContentLoaded", () => {
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        document.getElementById("message").innerHTML = "Welcome, " + user.email;
+                    }
+                    else {
+                        document.getElementById("message").innerHTML = "No user signed in.";
+                    }
+                });
+                signIn();
+            });
+
+            function signIn() {
+                const email = "acme.user.1@test.com";
+                const password = prompt("Please enter your password", "");
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        console.log("user credentials ", userCredential)
+                    })
+                    .catch((error) => {
+                        document.getElementById("message").innerHTML = error.message;
+                    });
+            }
+        </script>
+    </head>
+    <body>
+        Hola mundo!
+        <div id="message"></div>
+    </body>
+</html>

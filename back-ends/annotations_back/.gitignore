@@ -1,0 +1,10 @@
+# Enviroments
+./venv
+./env
+
+# Databases
+__pycache__/
+db.sqlite3
+
+#logs
+*.jsonl

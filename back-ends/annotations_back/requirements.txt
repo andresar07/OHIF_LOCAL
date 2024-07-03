@@ -1,0 +1,13 @@
+gunicorn
+requests
+psycopg[binary]
+django
+djangorestframework
+flask
+google-auth
+CacheControl
+gunicorn[gevent]
+# For documentation
+drf-yasg==1.21.5
+timeloop
+python-json-logger

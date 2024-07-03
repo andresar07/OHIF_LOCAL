@@ -1,0 +1,12 @@
+flask 
+requests
+psycopg[binary]
+django 
+djangorestframework
+google-auth
+CacheControl
+drf_yasg
+timeloop
+python-json-logger
+gunicorn[gevent]
+

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  annotations:
+    image: imexhs/ris-viewer:new-module-annot-test
+    build:
+      context: ..
+      dockerfile: ./docker_dev/Dockerfile
+    env_file:
+      - annot.env
+    ports:
+      - "9021:8000"
+
+  test_db:
+    image: postgres
+    restart: always
+    ports:
+      - "9545:5432"
+    env_file:
+      - test.env
